@@ -4,6 +4,7 @@ import resultpojo.ResultPojo;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,5 +30,19 @@ public class SymbolSplitter {
             }
         }
         return new ResultPojo(evenInt, oddInt);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SymbolSplitter that = (SymbolSplitter) o;
+        return Objects.equals(evenInt, that.evenInt) &&
+            Objects.equals(oddInt, that.oddInt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(evenInt, oddInt);
     }
 }

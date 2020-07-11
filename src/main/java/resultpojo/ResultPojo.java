@@ -1,6 +1,7 @@
 package resultpojo;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class ResultPojo {
@@ -39,5 +40,22 @@ public class ResultPojo {
 
     public Set<Integer> getOddInt() {
         return oddInt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResultPojo that = (ResultPojo) o;
+        return evenSum == that.evenSum &&
+            oddSum == that.oddSum &&
+            difference == that.difference &&
+            Objects.equals(evenInt, that.evenInt) &&
+            Objects.equals(oddInt, that.oddInt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(evenInt, oddInt, evenSum, oddSum, difference);
     }
 }
