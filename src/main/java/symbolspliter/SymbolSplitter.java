@@ -1,22 +1,20 @@
 package symbolspliter;
 
-import java.util.HashMap;
+import resultpojo.ResultPojo;
+
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SymbolSpliter {
+public class SymbolSplitter {
 
-    private final Set<Integer> evenInt = new HashSet();
-    private final Set<Integer> oddInt = new HashSet();
-    private final Map<String, Set<Integer>> allGroups = new HashMap<>();
+    private final Set<Integer> evenInt = new HashSet<>();
+    private final Set<Integer> oddInt = new HashSet<>();
 
-    public Map<String, Set<Integer>> splitSymbols() {
+    public ResultPojo splitSymbols() {
         final String string = "SPD-University";
-        final String toUpperToCase =
-            string.toUpperCase();
+        final String toUpperToCase = string.toUpperCase();
 
         final List<Character> symbols = toUpperToCase
             .chars()
@@ -30,8 +28,6 @@ public class SymbolSpliter {
                 oddInt.add(number);
             }
         }
-        allGroups.put("Even", evenInt);
-        allGroups.put("Odd", oddInt);
-        return allGroups;
+        return new ResultPojo(evenInt, oddInt);
     }
 }

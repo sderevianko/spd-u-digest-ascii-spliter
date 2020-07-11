@@ -1,6 +1,6 @@
 package printer;
 
-import java.util.Map;
+import resultpojo.ResultPojo;
 import java.util.Set;
 
 public class Printer {
@@ -21,9 +21,9 @@ public class Printer {
         System.out.println();
     }
 
-    public void printGroups(Map<String, Set<Integer>> allGroup) {
-        final Set<Integer> evenInteger = allGroup.get("Even");
-        final Set<Integer> oddInteger = allGroup.get("Odd");
+    public void printGroups(ResultPojo resultGroup) {
+        final Set<Integer> evenInteger = resultGroup.getEvenInt();
+        final Set<Integer> oddInteger = resultGroup.getOddInt();
 
         System.out.print("The first group of even ASCII code symbols: ");
         iterateSetSymbols(evenInteger);
@@ -34,7 +34,7 @@ public class Printer {
         iterateSetAsciiNumbers(oddInteger);
     }
 
-    public void printResults(Map<String, Integer> allResults) {
-        System.out.print("The difference between the sortSymbols of first group (" + allResults.get("evenSum") + ") and second group (" + allResults.get("oddSum") + ") = " + allResults.get("difference"));
+    public void printCalculatedResults(ResultPojo resultPojo) {
+        System.out.print("The difference between the sortSymbols of first group (" + resultPojo.getEvenSum() + ") and second group (" + resultPojo.getOddSum() + ") = " + resultPojo.getDifference());
     }
 }

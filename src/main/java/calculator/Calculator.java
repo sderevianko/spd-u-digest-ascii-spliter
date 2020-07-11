@@ -1,26 +1,21 @@
 package calculator;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import resultpojo.ResultPojo;
 
 public class Calculator {
-    private final Map<String, Integer> allResults = new HashMap<>();
 
-    public Map<String, Integer> calculateSum(Map<String, Set<Integer>> allGroup) {
+    public ResultPojo calculateSum(ResultPojo resultGroups) {
         int evenSum = 0;
         int oddSum = 0;
 
-        for (Integer integer : allGroup.get("Even")) {
+        for (Integer integer : resultGroups.getEvenInt()) {
             evenSum += integer;
         }
-        for (Integer integer : allGroup.get("Odd")) {
+        for (Integer integer : resultGroups.getOddInt()) {
             oddSum += integer;
         }
         final int difference = evenSum - oddSum;
-        allResults.put("evenSum", evenSum);
-        allResults.put("oddSum", oddSum);
-        allResults.put("difference", difference);
-        return allResults;
+
+        return new ResultPojo(evenSum, oddSum, difference);
     }
 }

@@ -2,20 +2,18 @@ package application;
 
 import calculator.Calculator;
 import printer.Printer;
-import symbolspliter.SymbolSpliter;
-
-import java.util.Map;
-import java.util.Set;
+import resultpojo.ResultPojo;
+import symbolspliter.SymbolSplitter;
 
 public class Main {
 
     public static void main(String[] args) {
-        final SymbolSpliter spliter = new SymbolSpliter();
+        final SymbolSplitter splitter = new SymbolSplitter();
         final Printer printer = new Printer();
         final Calculator calculate = new Calculator();
-        final Map<String, Set<Integer>> allGroups = spliter.splitSymbols();
-        final Map<String, Integer> allResults = calculate.calculateSum(allGroups);
-        printer.printGroups(allGroups);
-        printer.printResults(allResults);
+        final ResultPojo resultGroups = splitter.splitSymbols();
+        final ResultPojo resultCalculate = calculate.calculateSum(resultGroups);
+        printer.printGroups(resultGroups);
+        printer.printCalculatedResults(resultCalculate);
     }
 }
